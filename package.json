@@ -4,5 +4,9 @@
     },
     "scripts":{
         "start": "node index.js"
-    }
+        "test": "npm install mocha"
+    },
+    "devDependencies": {
+    "mocha": "^5.2.0"
+  }
 }
