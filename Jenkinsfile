@@ -5,12 +5,6 @@ node {
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
    }
-   stage('Test') {
-     nodejs(nodeJSInstallationName: 'nodejs') {
-       sh 'npm install'
-       sh 'npm test'
-     }
-   }
    stage('Docker build and push') {
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
        def app = docker.build("vigneshm243/nodejs-test:${commit_id}", '.').push()
